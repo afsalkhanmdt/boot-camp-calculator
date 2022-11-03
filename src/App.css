@@ -1,38 +1,58 @@
-.App {
-  text-align: center;
+body{
+  margin: 0;
+}
+.App{
+  background-color: #E6E6E6;
+  height: 100vh;
+  display: grid;
+  place-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container{
+  background-color: white;
+  box-shadow: 4px 4px 15px 4px rgba(0, 0, 0, 0.15), -4px -4px 20px 4px rgba(255, 255, 255, 0.2);
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.monitor{
+  background-color: #F6F6F6;
+  text-align: right;
+  padding: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.input-data{
+  font-size: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.result{
+  font-size: 35px;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-button{
+  display: grid;
+  padding-top: 10px;
+  grid-template-columns: repeat(4,1fr);
+  gap: 10px;
+}
+
+button{
+  height: 80px;
+  border: none;
+  background-color: #E8E8E8;
+  font-size: 40px;
+}
+
+.red{
+  color: red;
+}
+
+.green{
+  color: green;
+}
+
+.red , .green{
+  background-color: #C5C5C5;
 }
