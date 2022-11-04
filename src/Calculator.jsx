@@ -1,4 +1,10 @@
+import { useState } from "react"
+
 function Calculator(){
+    
+    const [input,setInput] = useState(0);
+    const [output,setOutput] = useState(0);
+    const [lastOperator,setLastOperator] = useState(false)
 
     const inputs = [
         {
@@ -51,25 +57,62 @@ function Calculator(){
              className: "green"
          },
          {
-             value: "/",
+             value: "+",
              className: "red"
          },
     ]
+
+    function onInput(value,type){
+        if(type === "equal"){
+            try{
+                let result = eval(input);
+                setOutput(result);
+                setInput(0)
+                return
+            }catch(error){
+                alert("Invalid Input");
+                return
+            }
+        }
+        if(input === 0 && type === "operant") {setInput(value); return}
+        if(lastOperator && type === "operator") return;
+        setLastOperator(type === "operator")
+        setInput(input+""+value);
+    }
+
+    function keyType(name){
+        switch (name){
+            case "red":
+                return "operator";
+            case "green":
+                return "equal";
+            default:
+                return "operant";
+        }
+    }
+    
 
     return(
         <div className="container">
             <section className="monitor">
                 <div className="input-data">
-                25*25
+                {input}
                 </div>
                 <div className="result">
-                625
+                {output.toFixed(6)}
                 </div>
             </section>
             <section className="input-button">
                 {inputs.map(
                     ({value,className})=>
-                    <button className={className} key={value}>{value}</button>
+                    <button
+                        className={className}
+                        key={value}
+                        onClick={()=>onInput(
+                            value,
+                            keyType(className)
+                            )}
+                    >{value}</button>
                 )}
             </section>
         </div>
