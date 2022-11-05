@@ -38,7 +38,7 @@ body{
   gap: 10px;
 }
 
-button{
+.input-button button{
   height: 80px;
   border: none;
   background-color: #E8E8E8;
